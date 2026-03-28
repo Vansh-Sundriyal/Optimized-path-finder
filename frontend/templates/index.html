@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Optimized Path Finder</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header glass">
+    Optimized Path Finder
+</div>
+
+<!-- MAP -->
+<div id="map"></div>
+
+<!-- VEHICLE BAR (always visible) -->
+<div id="vehicleBar" class="bottom-bar glass">
+    <div class="vehicle-options">
+        <button onclick="selectVehicle('walk',event)">🚶</button>
+        <button onclick="selectVehicle('bike',event)">🏍</button>
+        <button onclick="selectVehicle('car',event)">🚗</button>
+        <button onclick="selectVehicle('truck',event)">🚚</button>
+    </div>
+    <button class="primary" onclick="findRoute()">Find Best Route</button>
+</div>
+
+<!-- INFO PANEL -->
+<div id="statsPanel" class="info-panel glass hidden">
+    <h3 id="routeTitle">Recommended Route</h3>
+
+    <div class="info-row">
+        <span>Distance</span>
+        <b id="distanceText">-- km</b>
+    </div>
+
+    <div class="info-row">
+        <span>Time</span>
+        <b id="etaText">-- min</b>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="info-row">
+        <span>Weather</span>
+        <b id="weatherText">--</b>
+    </div>
+
+    <div class="info-row">
+        <span>Traffic</span>
+        <b id="trafficText">--</b>
+    </div>
+
+    <div class="divider"></div>
+
+    <ul id="explanationList"></ul>
+
+    <button class="secondary" onclick="resetAll()">Plan New Route</button>
+</div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script src="{{ url_for('static', filename='js/map.js') }}"></script>
+<script src="{{ url_for('static', filename='js/ui.js') }}"></script>
+<script src="{{ url_for('static', filename='js/api.js') }}"></script>
+
+</body>
+</html>
